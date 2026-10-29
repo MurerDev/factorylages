@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FACTORY AÇAÍ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Elementos decorativos orgânicos -->
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+
+  <header class="header">
+    <div class="container header-inner">
+      <a href="#" class="logo" aria-label="Página inicial">
+        <img src="logo.png" alt="Factory Açaí" class="logo-img" />
+        <span>FACTORY <span class="accent">AÇAÍ</span></span>
+      </a>
+      <nav class="nav" id="nav">
+        <a href="#cardapio">Cardápio</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#contato">Contato</a>
+        <a href="#" id="nav-rastrear">📦 Consultar Pedido</a>
+      </nav>
+      <div class="header-actions">
+        <button class="cart-btn" id="cart-btn" aria-label="Carrinho de compras" aria-controls="carrinho">
+          <span class="cart-icon">🛒</span>
+          <span class="cart-count" id="cart-count">0</span>
+        </button>
+        <button class="btn btn-outline btn-admin" id="btn-admin">🔐 Admin</button>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-inner">
+      <span class="hero-tag">Entrega em até 30 min</span>
+      <h1>O melhor açaí <span class="accent">na sua porta</span></h1>
+      <p>Tigelas refrescantes, sucos naturais e muitos complementos. Peça agora e receba rapidinho.</p>
+      <a href="#cardapio" class="btn btn-outline btn-ver-cardapio">Ver Cardápio</a>
+    </div>
+  </section>
+
+  <section id="cardapio" class="menu" aria-label="Cardápio">
+    <div class="container">
+      <header class="section-header">
+        <h2>Nosso <span class="accent">Cardápio</span></h2>
+        <p>Escolha seus sabores favoritos</p>
+      </header>
+
+      <a href="#" class="btn btn-primary btn-fazer-pedido topo" id="btn-fazer-pedido-topo">🫐 Fazer Pedido</a>
+
+      <img src="cardapio.png" alt="Cardápio Factory Açaí" class="cardapio-img" />
+
+      <div class="menu-grid" id="menu-grid">
+        <!-- produtos injetados pelo JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre" class="sobre">
+    <div class="container sobre-inner">
+      <div class="sobre-texto">
+        <h2>Sobre a <span class="accent">Factory Açaí</span></h2>
+        <p>Trabalhamos com açaí de qualidade, selecionado e preparado com muito carinho para você. Delivery rápido e produtos frescos todos os dias.</p>
+        <ul class="destaques">
+          <li><strong>⚡ Entrega rápida</strong> em toda a região</li>
+          <li><strong>🍓 Frutas frescas</strong> e complementos premium</li>
+          <li><strong>🥤 Opções para todos</strong> incluindo versões fit e zero açúcar</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato" class="contato">
+    <div class="container contato-inner">
+      <div class="contato-info">
+        <h2>Entre em contato</h2>
+        <p class="endereco">📍 Rua das Frutas, 123 - Centro, Sua Cidade</p>
+        <p class="telefone">📞 (49) 9982-5639</p>
+        <p class="whatsapp"><a href="https://wa.me/554999825639" target="_blank">💬 Pedir pelo WhatsApp</a></p>
+        <div class="redes">
+          <a href="https://www.instagram.com/factoryacai.lages" target="_blank" aria-label="Instagram">@factoryacai.lages</a>
+          <a href="#" aria-label="Facebook">Factory Açaí</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>&copy; 2026 Factory Açaí. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Modal de compra -->
+  <div class="modal" id="modal-produto" aria-hidden="true">
+    <div class="modal-overlay" data-fechar></div>
+    <div class="modal-content buy-modal" role="dialog" aria-modal="true" aria-label="Fazer pedido">
+      <button class="fechar" data-fechar>✕</button>
+
+      <div class="buy-header">
+        <div class="buy-imagem" id="buy-img">🫐</div>
+        <div class="buy-info">
+          <h3 id="buy-titulo">Monte seu Açaí</h3>
+          <p id="buy-subtitle">Escolha tamanho e complementos</p>
+        </div>
+      </div>
+
+      <!-- Progresso -->
+      <div class="buy-progress">
+        <div class="step-progress" id="step-1" data-step="1">1</div>
+        <div class="step-progress" id="step-2" data-step="2">2</div>
+        <div class="step-progress" id="step-3" data-step="3">3</div>
+        <div class="step-progress" id="step-4" data-step="4">4</div>
+      </div>
+      <div class="buy-progress-labels">
+        <span class="progress-label active" id="lbl-1">Tamanho</span>
+        <span class="progress-label" id="lbl-2">Complementos</span>
+        <span class="progress-label" id="lbl-3">Observação</span>
+        <span class="progress-label" id="lbl-4">Quantidade</span>
+      </div>
+
+      <!-- Painéis de etapas -->
+      <div class="buy-panels">
+        <!-- Etapa 1: Tamanho -->
+        <div class="buy-panel active" data-step="1">
+          <p class="panel-title">Escolha o tamanho do copo</p>
+          <div id="buy-tamanhos" class="tamanho-grid"></div>
+        </div>
+
+        <!-- Etapa 2: Complementos -->
+        <div class="buy-panel" data-step="2">
+          <p class="panel-title">Escolha os complementos</p>
+          <p class="panel-sub">Toque nos itens que deseja adicionar</p>
+          <div id="buy-complementos" class="complemento-grid"></div>
+        </div>
+
+        <!-- Etapa 3: Observação -->
+        <div class="buy-panel" data-step="3">
+          <p class="panel-title">Observação (opcional)</p>
+          <textarea id="buy-observacao" placeholder="Ex: sem leite condensado, extra granola..."></textarea>
+        </div>
+
+        <!-- Etapa 4: Quantidade -->
+        <div class="buy-panel" data-step="4">
+          <div class="buy-qtd">
+            <label for="buy-qtd">Quantidade</label>
+            <div class="qtd-control">
+              <button type="button" class="qtd-btn" id="qtd-menos">−</button>
+              <input type="number" id="buy-qtd" value="1" min="1" readonly>
+              <button type="button" class="qtd-btn" id="qtd-mais">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Resumo do pedido -->
+      <div class="buy-resumo" id="buy-resumo">
+        <div class="resumo-item">
+          <span class="resumo-label">Tamanho</span>
+          <span class="resumo-valor" id="resumo-tamanho">--</span>
+        </div>
+        <div class="resumo-item">
+          <span class="resumo-label">Complementos</span>
+          <span class="resumo-valor" id="resumo-complementos">--</span>
+        </div>
+        <div class="resumo-item resumo-total">
+          <span class="resumo-label">Total</span>
+          <span class="resumo-valor" id="resumo-total">R$ 0,00</span>
+        </div>
+      </div>
+
+      <div class="buy-nav">
+        <button type="button" class="btn btn-outline btn-voltar" id="buy-voltar">Voltar</button>
+        <button type="button" class="btn btn-primary btn-proximo" id="buy-proximo">Próximo</button>
+        <button type="button" class="btn btn-primary btn-add" id="buy-add" style="display:none;">Adicionar ao carrinho</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Carrinho lateral -->
+  <aside class="cart-drawer" id="carrinho" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Carrinho de compras">
+    <div class="cart-overlay" data-fechar-carrinho></div>
+    <div class="cart-panel">
+      <button class="cart-fechar" data-fechar-carrinho>✕</button>
+      <div class="cart-header">
+        <h2>Seu Carrinho</h2>
+        <span class="cart-count-badge" id="cart-count-badge">0 itens</span>
+      </div>
+      <div class="cart-itens" id="cart-itens"></div>
+      <div class="cart-resumo" id="cart-resumo">
+        <div class="cart-linha">
+          <span>Subtotal</span>
+          <span id="cart-subtotal">R$ 0,00</span>
+        </div>
+        <div class="cart-linha cart-linha-total">
+          <span>Total</span>
+          <span id="cart-total">R$ 0,00</span>
+        </div>
+        <button class="btn btn-primary btn-checkout" id="btn-checkout" disabled>Finalizar Pedido</button>
+        <p class="cart-vazio" id="cart-vazio" style="display:none;">Seu carrinho está vazio.<br>Que tal montar um açaí delicioso?</p>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Modal Login Admin -->
+  <div class="modal" id="modal-login" aria-hidden="true">
+    <div class="modal-overlay" data-fechar-login></div>
+    <div class="modal-content login-modal" role="dialog" aria-modal="true" aria-label="Login Admin">
+      <button class="fechar" data-fechar-login>✕</button>
+      <div class="login-header">
+        <div class="login-imagem">🔐</div>
+        <div class="login-info">
+          <h3>Acesso Administrativo</h3>
+          <p>Factory Açaí - Painel Admin</p>
+        </div>
+      </div>
+      <form id="form-login">
+        <div class="campo">
+          <label>Senha de acesso</label>
+          <input type="password" id="login-senha" required placeholder="Digite a senha">
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-outline" id="btn-cancelar-login">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Entrar</button>
+        </div>
+      </form>
+      <p id="login-erro" class="erro-login" style="display:none;">Senha incorreta!</p>
+    </div>
+  </div>
+
+  <!-- Modal Consulta de Pedido -->
+  <div class="modal" id="modal-consulta-pedido" aria-hidden="true">
+    <div class="modal-overlay" data-fechar-consulta></div>
+    <div class="modal-content consulta-modal" role="dialog" aria-modal="true" aria-label="Consultar pedido">
+      <button class="fechar" data-fechar-consulta>✕</button>
+      <div class="consulta-header">
+        <div class="consulta-imagem">📦</div>
+        <div class="consulta-info">
+          <h3>Consultar Pedido</h3>
+          <p>Informe o número do pedido ou seu telefone</p>
+        </div>
+      </div>
+      <form id="form-consulta-pedido">
+        <div class="campo">
+          <label>Número do pedido ou Telefone</label>
+          <input type="text" id="consulta-numero" required placeholder="#123456 ou (49) 9982-5639">
+        </div>
+        <button type="submit" class="btn btn-primary btn-consultar">Consultar</button>
+      </form>
+      <div id="resultado-consulta" class="resultado-consulta" style="display:none;"></div>
+    </div>
+  </div>
+
+  <!-- Modal checkout -->
+  <div class="modal" id="modal-checkout" aria-hidden="true">
+    <div class="modal-overlay" data-fechar-checkout></div>
+    <div class="modal-content checkout-content" role="dialog" aria-modal="true" aria-label="Finalizar pedido">
+      <button class="fechar" data-fechar-checkout>✕</button>
+      <div class="checkout-header">
+        <h2>Finalizar Pedido</h2>
+        <p>Preencha seus dados para entrega</p>
+      </div>
+      <form id="form-checkout">
+        <div class="campo">
+          <label for="checkout-nome">Nome completo</label>
+          <input type="text" id="checkout-nome" required placeholder="Seu nome">
+        </div>
+        <div class="campo">
+          <label for="checkout-endereco">Endereço de entrega</label>
+          <input type="text" id="checkout-endereco" required placeholder="Rua, número, bairro">
+        </div>
+        <div class="campo">
+          <label for="checkout-telefone">Telefone (DDD) 00000-0000</label>
+          <input type="tel" id="checkout-telefone" required placeholder="(49) 9982-5639" maxlength="15">
+        </div>
+        <div class="campo">
+          <label for="checkout-pagamento">Forma de pagamento</label>
+          <select id="checkout-pagamento" required>
+            <option value="">Escolha...</option>
+            <option value="dinheiro">Dinheiro</option>
+            <option value="cartao">Cartão de crédito/débito</option>
+            <option value="pix">PIX</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary btn-confirmar">Confirmar Pedido</button>
+      </form>
+      <p id="checkout-msg" class="msg"></p>
+    </div>
+  </div>
+
+  <section id="consulta" class="consulta-section">
+    <div class="container">
+      <header class="section-header">
+        <h2>Consultar <span class="accent">Pedido</span></h2>
+        <p>Acompanhe o status da sua entrega</p>
+      </header>
+      <div class="consulta-card">
+        <div class="consulta-info">
+          <h3>Meu Pedido</h3>
+          <p>Você recebeu o número do pedido por e-mail ou WhatsApp após finalizar a compra.</p>
+        </div>
+        <div class="consulta-actions">
+          <button class="btn btn-primary btn-abrir-consulta">📦 Consultar Pedido</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
